@@ -21,8 +21,10 @@ public class Stacker extends Building {
     }
 
 
+    private static int i = 0;
     private Stacker(int w, int h, Acceptor[] acceptors, Ejector[] ejectors) {
         super(w, h, acceptors, ejectors);
+        super.id = "S" + i++;
     }
 
     @Override
@@ -30,8 +32,4 @@ public class Stacker extends Building {
         return new Shape[]{((Shape) items[0]).stackWith((Shape) items[1])};
     }
 
-    @Override
-    public String toString() {
-        return "S";
-    }
 }

@@ -7,12 +7,15 @@ import game.buildings.GoalAcceptor;
 import util.Position;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 // Depth First Search
 public class DFSSolver {
 
     private List<Solution> solutionList;
+    private Set<String> historySet;
     private Building[] allBuildings;
     private Board board;
     private long time;
@@ -37,6 +40,7 @@ public class DFSSolver {
         allBuildings = puzzle.getAvailableBuildings();
         board = createBoard(puzzle);
 
+        historySet = new HashSet<>();
         solutionList = new ArrayList<>();
         dfs();
         time = System.currentTimeMillis() - time;
@@ -49,21 +53,22 @@ public class DFSSolver {
 
     int i = 0;
 
+
     private void dfs() {
-//        System.out.println(this.board);
         for (Position port : board.getPositions()) {
             for (Building building : allBuildings) {
                 boolean success = board.tryPlaceEntity(building, port);
                 if (success) {
                     System.out.print("\r" + i++);
-//                    System.out.println(i++);
-//                    System.out.println(board);
                     if (board.achieve()) {
-                        System.out.println("!\n!");
-//                        System.out.println(board);
+                        System.out.println();
+                        System.out.println(board.toString());
+                        System.out.println();
                         solutionList.add(new Solution(board.toString()));
                     } else {
-                        dfs();
+                        if (historySet.add(board.toString())) {
+                            dfs();
+                        }
                     }
                     board.removeLastEntity();
                 }

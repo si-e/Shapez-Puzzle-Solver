@@ -27,9 +27,11 @@ public class Belt extends Building {
         }
     }
 
+    private static int i = 0;
 
     private Belt(int w, int h, Acceptor[] acceptors, Ejector[] ejectors) {
         super(w, h, acceptors, ejectors);
+        super.id = "B" + i++;
     }
 
     @Override
@@ -37,8 +39,4 @@ public class Belt extends Building {
         return items;
     }
 
-    @Override
-    public String toString() {
-        return "B";
-    }
 }

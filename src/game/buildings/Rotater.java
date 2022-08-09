@@ -27,10 +27,12 @@ public class Rotater extends Building {
     }
 
     private final int degree;
+    private static int i = 0;
 
     private Rotater(int w, int h, Acceptor[] acceptors, Ejector[] ejectors, int degree) {
         super(w, h, acceptors, ejectors);
         this.degree = degree;
+        super.id = "R" + i++;
     }
 
     @Override
@@ -38,8 +40,4 @@ public class Rotater extends Building {
         return new Shape[]{((Shape) items[0]).rotate(degree)};
     }
 
-    @Override
-    public String toString() {
-        return "R";
-    }
 }

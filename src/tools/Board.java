@@ -138,7 +138,7 @@ public class Board {
         }
         for (int y = g[0].length - 1; y >= 0; y--) {
             for (String[] ns : g) {
-                s.append('|').append((ns[y] != null) ? ns[y] : "  ");
+                s.append('|').append((ns[y] != null) ? ns[y] : "   ");
             }
             s.append("|\n");
         }

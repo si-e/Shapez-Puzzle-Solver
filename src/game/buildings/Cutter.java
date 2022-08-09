@@ -30,8 +30,11 @@ public class Cutter extends Building {
         }
     }
 
+    private static int i = 0;
+
     private Cutter(int w, int h, Acceptor[] acceptors, Ejector[] ejectors) {
         super(w, h, acceptors, ejectors);
+        super.id = "C" + i++;
     }
 
     @Override
@@ -50,8 +53,4 @@ public class Cutter extends Building {
         }
     }
 
-    @Override
-    public String toString() {
-        return "C";
-    }
 }

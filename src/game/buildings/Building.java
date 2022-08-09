@@ -14,6 +14,7 @@ import java.util.function.Function;
 
 public abstract class Building {
 
+    protected String id;
     protected int dx, dy;
 
     // temp related acc and eje
@@ -50,4 +51,8 @@ public abstract class Building {
         return dy;
     }
 
+    @Override
+    public String toString() {
+        return id;
+    }
 }
